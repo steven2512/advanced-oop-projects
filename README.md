@@ -24,3 +24,13 @@ Key capabilities:
 - **Battle Engine:** Implements multi-phase combat flow, including damage calculation with type multipliers and Pokedex completion bonuses.  
 - **Data-Driven Design:** Type effectiveness matrix initialized from external CSV for flexible updates.  
 - **Complexity Annotations:** All methods include formal Big-O analysis for best and worst cases, ensuring transparency of performance characteristics.
+
+## Usage
+
+The system is designed as a modular framework. Key modules expose clean APIs for integration or extension.
+
+Typical usage involves:  
+1. Initializing type-effectiveness matrices from external CSV data.  
+2. Creating Pokémon entities and forming teams dynamically.  
+3. Running battles using one of the supported modes (Set, Rotating, Optimised).  
+4. Optionally engaging in the Battle Tower for extended multi-team challenges.
