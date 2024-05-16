@@ -34,3 +34,15 @@ Typical usage involves:
 2. Creating Pokémon entities and forming teams dynamically.  
 3. Running battles using one of the supported modes (Set, Rotating, Optimised).  
 4. Optionally engaging in the Battle Tower for extended multi-team challenges.
+
+## Implementation Notes
+
+- **Data Structures:** Custom-built queues, priority queues, and linked lists replace Python built-ins to meet strict constraints.  
+- **Efficiency:** Algorithms are optimized for deterministic time and space complexity.  
+- **Code Quality:** Modular, extensible structure with full docstring coverage.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
