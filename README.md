@@ -46,3 +46,15 @@ Typical usage involves:
 ## License
 
 This project is licensed under the MIT License.
+
+## Acknowledgements
+
+This project was developed in an academic context as part of advanced computer science and software engineering coursework at Monash University. It explores algorithmic design and data abstraction under real-world constraints, demonstrating a disciplined approach to system architecture.
+
+Special focus was placed on:  
+- Multi-mode battle system design (Set, Rotating, Optimised).  
+- Type-effectiveness matrix initialization from external CSV.  
+- Evolution and level-scaling mechanics within turn-based combat flows.  
+- Strict avoidance of Python built-in containers in favor of custom ADTs.
+
+The implementation reflects attention to software engineering principles, modularity, and predictable algorithmic complexity.
