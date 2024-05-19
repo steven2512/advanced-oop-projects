@@ -1,3 +1,77 @@
+"""
+This module contains PokeType, TypeEffectiveness and an abstract version of the Pokemon Class
+"""
+from abc import ABC
+from enum import Enum
+from data_structures.referential_array import ArrayR
+import pdb
+import math
+
+class PokeType(Enum):
+    """
+    This class contains all the different types that a Pokemon could belong to
+    """
+    FIRE = 0
+    WATER = 1
+    GRASS = 2
+    BUG = 3
+    DRAGON = 4
+    ELECTRIC = 5
+    FIGHTING = 6
+    FLYING = 7
+    GHOST = 8
+    GROUND = 9
+    ICE = 10
+    NORMAL = 11
+    POISON = 12
+    PSYCHIC = 13
+    ROCK = 14
+
+class TypeEffectiveness:
+    """Represents the type effectiveness of one Pokemon type against another.
+    """
+    #fist we open the csv file
+    csv = open('type_effectiveness.csv')
+    #then we turned it into a tuple
+    csv = tuple(csv)
+    #Then we use a Data structure of Array for the EFFECT_TABLE
+    EFFECT_TABLE = ArrayR(len(csv))
+    #now we populate the EFFECT_TABLE
+    for i,effect in enumerate(csv):
+        items = effect.split(',')
+        EFFECT_TABLE.__setitem__(i, items)
+ 
+    #remove '\n' manually out of some affected data in the EFFECT TABLE
+    for effect in EFFECT_TABLE:
+        for index, item in enumerate(effect):
+            if "\n" in item:
+                effect[index] = effect[index][0:-1]
+   
+    @classmethod
+    def get_effectiveness(cls, attack_type: PokeType, defend_type: PokeType) -> float:
+        attack = attack_type.value
+        defend = defend_type.value
+        #the reason for '+1' is to avoid the first row that has titles of all types
+        return float(cls.EFFECT_TABLE[attack+1][defend])
+        
+        """
+        Returns the effectiveness of one Pokemon type against another, as a float.
+
+        Parameters:
+            attack_type (PokeType): The type of the attacking Pokemon.
+            defend_type (PokeType): The type of the defending Pokemon.
+
+        Returns:
+            float: The effectiveness of the attack, as a float value between 0 and 4.
+        """
+        
+    
+    def __len__(self) -> int:
+        """
+        Returns the number of types of Pokemon
+        """
+        return len(self.EFFECT_TABLE)-1
+
 class Pokemon(ABC): # pylint: disable=too-few-public-methods, too-many-instance-attributes
     """
     Represents a base Pokemon class with properties and methods common to all Pokemon.
