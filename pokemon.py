@@ -157,3 +157,81 @@ class NidoranM(Pokemon):
         self.defence = 7
         self.speed = 41
 
+class NidoranF(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 55
+        self.level = 1
+        self.poketype = PokeType.POISON
+        self.battle_power = 20
+        self.evolution_line = ["Nidoran(F)", "Nidorina", "Nidoqueen"]
+        self.name = "Nidoran(F)"
+        self.experience = 0
+        self.defence = 12
+        self.speed = 56
+
+class Clefairy(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 70
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 17
+        self.evolution_line = ["Clefairy", "Clefable"]
+        self.name = "Clefairy"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 35
+
+class Vulpix(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 38
+        self.level = 1
+        self.poketype = PokeType.FIRE
+        self.battle_power = 21
+        self.evolution_line = ["Vulpix", "Ninetales"]
+        self.name = "Vulpix"
+        self.experience = 0
+        self.defence = 8
+        self.speed = 65
+
+class Jigglypuff(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 67
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 13
+        self.evolution_line = ["Jigglypuff", "Wigglytuff"]
+        self.name = "Jigglypuff"
+        self.experience = 0
+        self.defence = 8
+        self.speed = 20
+
+class Zubat(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 40
+        self.level = 1
+        self.poketype = PokeType.POISON
+        self.battle_power = 20
+        self.evolution_line = ["Zubat", "Golbat"]
+        self.name = "Zubat"
+        self.experience = 0
+        self.defence = 7
+        self.speed = 80
+
+class Oddish(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 45
+        self.level = 1
+        self.poketype = PokeType.GRASS
+        self.battle_power = 18
+        self.evolution_line = ["Oddish", "Gloom", "Vileplume"]
+        self.name = "Oddish"
+        self.experience = 0
+        self.defence = 7
+        self.speed = 30
+
