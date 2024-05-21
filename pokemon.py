@@ -235,3 +235,67 @@ class Oddish(Pokemon):
         self.defence = 7
         self.speed = 30
 
+class Paras(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 35
+        self.level = 1
+        self.poketype = PokeType.BUG
+        self.battle_power = 23
+        self.evolution_line = ["Paras", "Parasect"]
+        self.name = "Paras"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 25
+
+class Venonat(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 60
+        self.level = 1
+        self.poketype = PokeType.BUG
+        self.battle_power = 30
+        self.evolution_line = ["Venonat", "Venomoth"]
+        self.name = "Venonat"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 45
+
+class Diglett(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 10
+        self.level = 1
+        self.poketype = PokeType.GROUND
+        self.battle_power = 29
+        self.evolution_line = ["Diglett", "Dugtrio"]
+        self.name = "Diglett"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 95
+
+class Meowth(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 40
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 20
+        self.evolution_line = ["Meowth", "Persian"]
+        self.name = "Meowth"
+        self.experience = 0
+        self.defence = 8
+        self.speed = 90
+
+class Psyduck(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 50
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 20
+        self.evolution_line = ["Psyduck", "Golduck"]
+        self.name = "Psyduck"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 55
