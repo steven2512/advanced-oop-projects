@@ -299,3 +299,94 @@ class Psyduck(Pokemon):
         self.experience = 0
         self.defence = 15
         self.speed = 55
+
+class Mankey(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 40
+        self.level = 1
+        self.poketype = PokeType.FIGHTING
+        self.battle_power = 35
+        self.evolution_line = ["Mankey", "Primeape"]
+        self.name = "Mankey"
+        self.experience = 0
+        self.defence = 20
+        self.speed = 70
+
+class Growlithe(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 55
+        self.level = 1
+        self.poketype = PokeType.FIRE
+        self.battle_power = 24
+        self.evolution_line = ["Growlithe", "Arcanine"]
+        self.name = "Growlithe"
+        self.experience = 0
+        self.defence = 12
+        self.speed = 60
+
+class Poliwag(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 40
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 20
+        self.evolution_line = ["Poliwag", "Poliwhirl", "Poliwrath"]
+        self.name = "Poliwag"
+        self.experience = 0
+        self.defence = 8
+        self.speed = 90
+
+class Abra(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 25
+        self.level = 1
+        self.poketype = PokeType.PSYCHIC
+        self.battle_power = 10
+        self.evolution_line = ["Abra", "Kadabra", "Alakazam"]
+        self.name = "Abra"
+        self.experience = 0
+        self.defence = 5
+        self.speed = 90
+
+class Machop(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 55
+        self.level = 1
+        self.poketype = PokeType.FIGHTING
+        self.battle_power = 30
+        self.evolution_line = ["Machop", "Machoke", "Machamp"]
+        self.name = "Machop"
+        self.experience = 0
+        self.defence = 26
+        self.speed = 35
+
+class Bellsprout(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 50
+        self.level = 1
+        self.poketype = PokeType.GRASS
+        self.battle_power = 26
+        self.evolution_line = ["Bellsprout", "Weepinbell", "Victreebel"]
+        self.name = "Bellsprout"
+        self.experience = 0
+        self.defence = 13
+        self.speed = 40
+
+class Tentacool(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 40
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 25
+        self.evolution_line = ["Tentacool", "Tentacruel"]
+        self.name = "Tentacool"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 70
