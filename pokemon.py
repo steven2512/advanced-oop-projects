@@ -390,3 +390,108 @@ class Tentacool(Pokemon):
         self.experience = 0
         self.defence = 15
         self.speed = 70
+
+class Geodude(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 40
+        self.level = 1
+        self.poketype = PokeType.ROCK
+        self.battle_power = 7
+        self.evolution_line = ["Geodude", "Graveler", "Golem"]
+        self.name = "Geodude"
+        self.experience = 0
+        self.defence = 35
+        self.speed = 20
+
+class Ponyta(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 50
+        self.level = 1
+        self.poketype = PokeType.FIRE
+        self.battle_power = 25
+        self.evolution_line = ["Ponyta", "Rapidash"]
+        self.name = "Ponyta"
+        self.experience = 0
+        self.defence = 12
+        self.speed = 90
+
+class Slowpoke(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 66
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 8
+        self.evolution_line = ["Slowpoke", "Slowbro"]
+        self.name = "Slowpoke"
+        self.experience = 0
+        self.defence = 20
+        self.speed = 15
+
+class Magnemite(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 25
+        self.level = 1
+        self.poketype = PokeType.ELECTRIC
+        self.battle_power = 20
+        self.evolution_line = ["Magnemite", "Magneton"]
+        self.name = "Magnemite"
+        self.experience = 0
+        self.defence = 8
+        self.speed = 45
+
+class Farfetchd(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 52
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 17
+        self.evolution_line = ["Farfetchd"]
+        self.name = "Farfetchd"
+        self.experience = 0
+        self.defence = 12
+        self.speed = 60
+
+class Doduo(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 35
+        self.level = 1
+        self.poketype = PokeType.FLYING
+        self.battle_power = 30
+        self.evolution_line = ["Doduo", "Dodrio"]
+        self.name = "Doduo"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 75
+
+class Seel(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 65
+        self.level = 1
+        self.poketype = PokeType.ICE
+        self.battle_power = 45
+        self.evolution_line = ["Seel", "Dewgong"]
+        self.name = "Seel"
+        self.experience = 0
+        self.defence = 25
+        self.speed = 65
+
+class Grimer(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 80
+        self.level = 1
+        self.poketype = PokeType.POISON
+        self.battle_power = 30
+        self.evolution_line = ["Grimer", "Muk"]
+        self.name = "Grimer"
+        self.experience = 0
+        self.defence = 25
+        self.speed = 25
+
