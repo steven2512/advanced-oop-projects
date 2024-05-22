@@ -495,3 +495,93 @@ class Grimer(Pokemon):
         self.defence = 25
         self.speed = 25
 
+class Shellder(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 30
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 20
+        self.evolution_line = ["Shellder", "Cloyster"]
+        self.name = "Shellder"
+        self.experience = 0
+        self.defence = 12
+        self.speed = 40
+
+class Gastly(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 30
+        self.level = 1
+        self.poketype = PokeType.GHOST
+        self.battle_power = 25
+        self.evolution_line = ["Gastly", "Haunter", "Gengar"]
+        self.name = "Gastly"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 80
+
+class Onix(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 35
+        self.level = 1
+        self.poketype = PokeType.ROCK
+        self.battle_power = 45
+        self.evolution_line = ["Onix", "Steelix"]
+        self.name = "Onix"
+        self.experience = 0
+        self.defence = 20
+        self.speed = 30
+
+class Drowzee(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 60
+        self.level = 1
+        self.poketype = PokeType.PSYCHIC
+        self.battle_power = 25
+        self.evolution_line = ["Drowzee", "Hypno"]
+        self.name = "Drowzee"
+        self.experience = 0
+        self.defence = 12
+        self.speed = 42
+
+class Krabby(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 30
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 22
+        self.evolution_line = ["Krabby", "Kingler"]
+        self.name = "Krabby"
+        self.experience = 0
+        self.defence = 8
+        self.speed = 50
+
+class Voltorb(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 40
+        self.level = 1
+        self.poketype = PokeType.ELECTRIC
+        self.battle_power = 30
+        self.evolution_line = ["Voltorb", "Electrode"]
+        self.name = "Voltorb"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 100
+
+class Exeggcute(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 60
+        self.level = 1
+        self.poketype = PokeType.GRASS
+        self.battle_power = 17
+        self.evolution_line = ["Exeggcute", "Exeggutor"]
+        self.name = "Exeggcute"
+        self.experience = 0
+        self.defence = 7
+        self.speed = 20
