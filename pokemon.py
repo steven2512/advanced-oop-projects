@@ -585,3 +585,55 @@ class Exeggcute(Pokemon):
         self.experience = 0
         self.defence = 7
         self.speed = 20
+
+class Cubone(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 50
+        self.level = 1
+        self.poketype = PokeType.GROUND
+        self.battle_power = 18
+        self.evolution_line = ["Cubone", "Marowak"]
+        self.name = "Cubone"
+        self.experience = 0
+        self.defence = 8
+        self.speed = 35
+
+class Hitmonlee(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 50
+        self.level = 1
+        self.poketype = PokeType.FIGHTING
+        self.battle_power = 25
+        self.evolution_line = ["Hitmonlee"]
+        self.name = "Hitmonlee"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 87
+
+class Hitmonchan(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 50
+        self.level = 1
+        self.poketype = PokeType.FIGHTING
+        self.battle_power = 30
+        self.evolution_line = [ "Hitmonchan"]
+        self.name = "Hitmonchan"
+        self.experience = 0
+        self.defence = 20
+        self.speed = 76
+
+class Lickitung(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 90
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 55
+        self.evolution_line = ["Lickitung"]
+        self.name = "Lickitung"
+        self.experience = 0
+        self.defence = 35
+        self.speed = 30
