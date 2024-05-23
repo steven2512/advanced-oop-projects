@@ -637,3 +637,68 @@ class Lickitung(Pokemon):
         self.experience = 0
         self.defence = 35
         self.speed = 30
+
+class Koffing(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 40
+        self.level = 1
+        self.poketype = PokeType.POISON
+        self.battle_power = 35
+        self.evolution_line = ["Koffing", "Weezing"]
+        self.name = "Koffing"
+        self.experience = 0
+        self.defence = 25
+        self.speed = 35
+
+class Rhyhorn(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 80
+        self.level = 1
+        self.poketype = PokeType.GROUND
+        self.battle_power = 45
+        self.evolution_line = ["Rhyhorn", "Rhydon"]
+        self.name = "Rhyhorn"
+        self.experience = 0
+        self.defence = 50
+        self.speed = 25
+
+class Chansey(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 150
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 5
+        self.evolution_line = ["Chansey", "Blissey"]
+        self.name = "Chansey"
+        self.experience = 0
+        self.defence = 5
+        self.speed = 50
+
+class Tangela(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 65
+        self.level = 1
+        self.poketype = PokeType.GRASS
+        self.battle_power = 28
+        self.evolution_line = ["Tangela"]
+        self.name = "Tangela"
+        self.experience = 0
+        self.defence = 24
+        self.speed = 30
+
+class Kangaskhan(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 88
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 32
+        self.evolution_line = ["Kangaskhan"]
+        self.name = "Kangaskhan"
+        self.experience = 0
+        self.defence = 60
+        self.speed = 70
