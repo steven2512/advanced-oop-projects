@@ -858,3 +858,68 @@ class Lapras(Pokemon):
         self.experience = 0
         self.defence = 10
         self.speed = 60
+
+class Ditto(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 48
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 10
+        self.evolution_line = ["Ditto"]
+        self.name = "Ditto"
+        self.experience = 0
+        self.defence = 48
+        self.speed = 50
+
+class Eevee(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 55
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 10
+        self.evolution_line = ["Eevee"]
+        self.name = "Eevee"
+        self.experience = 0
+        self.defence = 35
+        self.speed = 55
+
+class Porygon(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 65
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 12
+        self.evolution_line = ["Porygon"]
+        self.name = "Porygon"
+        self.experience = 0
+        self.defence = 7
+        self.speed = 60
+
+class Omanyte(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 35
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 12
+        self.evolution_line = ["Omanyte", "Omastar"]
+        self.name = "Omanyte"
+        self.experience = 0
+        self.defence = 20
+        self.speed = 40
+
+class Kabuto(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 30
+        self.level = 1
+        self.poketype = PokeType.ROCK
+        self.battle_power = 10
+        self.evolution_line = ["Kabuto", "Kabutops"]
+        self.name = "Kabuto"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 55
