@@ -767,3 +767,94 @@ class Scyther(Pokemon):
         self.experience = 0
         self.defence = 15
         self.speed = 105
+
+class Jynx(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 65
+        self.level = 1
+        self.poketype = PokeType.ICE
+        self.battle_power = 20
+        self.evolution_line = ["Jynx"]
+        self.name = "Jynx"
+        self.experience = 0
+        self.defence = 35
+        self.speed = 95
+
+class Electabuzz(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 65
+        self.level = 1
+        self.poketype = PokeType.ELECTRIC
+        self.battle_power = 15
+        self.evolution_line = ["Electabuzz"]
+        self.name = "Electabuzz"
+        self.experience = 0
+        self.defence = 12
+        self.speed = 100
+
+class Magmar(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 65
+        self.level = 1
+        self.poketype = PokeType.FIRE
+        self.battle_power = 20
+        self.evolution_line = ["Magmar"]
+        self.name = "Magmar"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 80
+
+class Pinsir(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 65
+        self.level = 1
+        self.poketype = PokeType.BUG
+        self.battle_power = 20
+        self.evolution_line = ["Pinsir"]
+        self.name = "Pinsir"
+        self.experience = 0
+        self.defence = 35
+        self.speed = 85
+
+class Tauros(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 75
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 15
+        self.evolution_line = ["Tauros"]
+        self.name = "Tauros"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 110
+
+class Magikarp(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 20
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 5
+        self.evolution_line = ["Magikarp", "Gyarados"]
+        self.name = "Magikarp"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 80
+
+class Lapras(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 90
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 12
+        self.evolution_line = ["Lapras"]
+        self.name = "Lapras"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 60
