@@ -702,3 +702,68 @@ class Kangaskhan(Pokemon):
         self.experience = 0
         self.defence = 60
         self.speed = 70
+
+class Horsea(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 30
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 10
+        self.evolution_line = ["Horsea", "Seadra"]
+        self.name = "Horsea"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 60
+
+class Goldeen(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 45
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 11
+        self.evolution_line = ["Goldeen", "Seaking"]
+        self.name = "Goldeen"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 65
+
+class Staryu(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 30
+        self.level = 1
+        self.poketype = PokeType.WATER
+        self.battle_power = 10
+        self.evolution_line = ["Staryu", "Starmie"]
+        self.name = "Staryu"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 85
+
+class MrMime(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 40
+        self.level = 1
+        self.poketype = PokeType.PSYCHIC
+        self.battle_power = 10
+        self.evolution_line = ["Mr. Mime"]
+        self.name = "Mr. Mime"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 30
+
+class Scyther(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 70
+        self.level = 1
+        self.poketype = PokeType.BUG
+        self.battle_power = 20
+        self.evolution_line = ["Scyther"]
+        self.name = "Scyther"
+        self.experience = 0
+        self.defence = 15
+        self.speed = 105
