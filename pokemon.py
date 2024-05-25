@@ -923,3 +923,55 @@ class Kabuto(Pokemon):
         self.experience = 0
         self.defence = 10
         self.speed = 55
+
+class Aerodactyl(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 80
+        self.level = 1
+        self.poketype = PokeType.ROCK
+        self.battle_power = 25
+        self.evolution_line = ["Aerodactyl"]
+        self.name = "Aerodactyl"
+        self.experience = 0
+        self.defence = 5
+        self.speed = 130
+
+class Snorlax(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 85
+        self.level = 1
+        self.poketype = PokeType.NORMAL
+        self.battle_power = 20
+        self.evolution_line = ["Munchlax", "Snorlax"]
+        self.name = "Snorlax"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 30
+
+class Articuno(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 90
+        self.level = 1
+        self.poketype = PokeType.ICE
+        self.battle_power = 30
+        self.evolution_line = ["Articuno"]
+        self.name = "Articuno"
+        self.experience = 0
+        self.defence = 20
+        self.speed = 85
+
+class Zapdos(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 90
+        self.level = 1
+        self.poketype = PokeType.ELECTRIC
+        self.battle_power = 30
+        self.evolution_line = ["Zapdos"]
+        self.name = "Zapdos"
+        self.experience = 0
+        self.defence = 20
+        self.speed = 100
