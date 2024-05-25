@@ -975,3 +975,42 @@ class Zapdos(Pokemon):
         self.experience = 0
         self.defence = 20
         self.speed = 100
+
+class Moltres(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 90
+        self.level = 1
+        self.poketype = PokeType.FIRE
+        self.battle_power = 25
+        self.evolution_line = ["Moltres"]
+        self.name = "Moltres"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 90
+
+class Dratini(Pokemon):
+    def __init__(self):
+        super().__init__()
+        self.health = 41
+        self.level = 1
+        self.poketype = PokeType.DRAGON
+        self.battle_power = 12
+        self.evolution_line = ["Dratini", "Dragonair", "Dragonite"]
+        self.name = "Dratini"
+        self.experience = 0
+        self.defence = 10
+        self.speed = 86
+
+def get_all_pokemon_types() -> ArrayR[Pokemon]:
+    all_pokemon = ArrayR(77)
+    i = 0
+    for name, cls in inspect.getmembers(inspect.getmodule(inspect.currentframe()), inspect.isclass):
+        if cls != Pokemon and issubclass(cls, Pokemon):
+            all_pokemon[i] = cls
+            i += 1
+    return all_pokemon
+
+
+if __name__ == '__main__':
+    pass
