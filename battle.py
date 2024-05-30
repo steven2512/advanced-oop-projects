@@ -44,3 +44,113 @@ class Battle:
             #assign team based on criterion
             self.trainer_1.PokeTeam.assign_team(self.criterion)
             self.trainer_2.PokeTeam.assign_team(self.criterion)
+
+    def set_battle(self) -> PokeTeam | None:
+        """Worst/best case: O(round)"""
+        #assign t1 and t2 as trainer1 and 2 teams
+        t1 = self.trainer_1.PokeTeam.team
+        t2 = self.trainer_2.PokeTeam.team
+        #register Pokemons in the queue (unserved) of both teams to the Pokedex
+        self.pokedex_reg()
+        #serve Pokemon at front of the queue from each team
+        p1 = t1.serve()
+        p2 = t2.serve()
+        round = 0
+        while True:
+            #These first if elif are for later evluation at the end of round
+            if p1 is None and p2 is not None:
+                #check if t1 is out of Pokemons
+                if len(t1) == 0:
+                    #append the last alive pokemon back in team at the end of battle
+                    t2.rear -= t2.length+1
+                    t2.append(p2)
+                    break
+                #if not then continue serving another Pokemon
+                p1 = t1.serve()
+                #trainer 2 registers new pokemon appeared in t1 to the Pokedex
+                self.trainer_2.register_pokemon(p1)
+            elif p1 is not None and p2 is None:
+                #same process like above
+                if len(t2) == 0:
+                    #append the last alive pokemon back in team at the end of battle
+                    t1.rear -= t1.length+1
+                    t1.append(p1)
+                    break 
+                p2 = t2.serve()
+                self.trainer_1.register_pokemon(p2)
+            elif p1 is not None and p2 is not None:
+                #both trainers register new Pokemon they see to the Pokedex
+                self.trainer_1.register_pokemon(p2)
+                self.trainer_2.register_pokemon(p1)
+            else:
+                #this is the case where both Pokemon died on the battlefield. So we serve new 2 pokemons and register Pokemons to the Pokedex
+                p1 = t1.serve()
+                p2 = t2.serve()
+                self.trainer_1.register_pokemon(p2)
+                self.trainer_2.register_pokemon(p1)
+            #damage caluclation when p1 attacks p2 and vice versa
+            dmg1 = self.cal_attack(p1,p2,self.trainer_1,self.trainer_2)
+            dmg2 = self.cal_attack(p2,p1,self.trainer_2,self.trainer_1)
+
+            #battle logic evaluation now begins
+            if p1.speed > p2.speed:
+                p2.defend(dmg1)
+                if p2.is_alive():
+                    p1.defend(dmg2)
+                else:
+                    p1.level_up()
+                    round += 1
+                    p2 = None
+                    continue
+            elif p1.speed < p2.speed:
+                p1.defend(dmg2)
+                if p1.is_alive():
+                    p2.defend(dmg1)
+                else:
+                    p2.level_up()
+                    round += 1
+                    p1 = None
+                    continue
+            else:
+                p1.defend(dmg2)
+                p2.defend(dmg1)
+            #evaluation after first attack
+            if p1.is_alive() and not p2.is_alive():
+                p1.level_up()
+                p2 = None
+                round += 1
+                continue
+            elif not p1.is_alive() and p2.is_alive():
+                p2.level_up()
+                round += 1
+                p1 = None
+                continue
+            elif p1.is_alive() and p2.is_alive():
+                p1.health -= 1
+                p2.health -= 1
+                if p1.is_alive() and not p2.is_alive():
+                    p1.level_up()
+                    p2 = None
+                    round += 1
+                    continue
+                elif not p1.is_alive() and p2.is_alive():
+                    p2.level_up()
+                    p1 = None
+                    round += 1
+                    continue
+                elif p1.is_alive() and p2.is_alive():
+                   pass
+                else:
+                    p1 = None
+                    p2 = None
+            else:
+                p1 = None
+                p2 = None
+            round += 1
+        #final evaluation of the winner
+        if len(t1) > 0 and len(t2) == 0:
+            return self.trainer_1
+        elif len(t2) > 0 and len (t1) == 0:
+            return self.trainer_2
+        else:
+            return None
