@@ -154,3 +154,128 @@ class Battle:
             return self.trainer_2
         else:
             return None
+        
+     def rotate_battle(self) -> PokeTeam | None:
+        """Worst/best case: O(round)"""
+        t1 = self.trainer_1.PokeTeam.team
+        t2 = self.trainer_2.PokeTeam.team
+        #register Pokemons in the queue (unserved) of both teams to the Pokedex
+        self.pokedex_reg()
+        # pdb.set_trace()
+        p1 = t1.serve()
+        p2 = t2.serve()
+        #initial attack
+        round = 0
+        while True:
+            if p1 is None and p2 is not None:
+                #this dead_pokemon is for final evaluation after t1 has no Pokemons to play 
+                dead_pokemon_1 = t1.array[t1.front-1]              
+                if len(t1) == 0:
+                    #append survived pokemon back after the last round
+                    t2.append(p2)
+                    self.trainer_1.PokeTeam.dead.push(dead_pokemon_1) 
+                    break
+                t2.append(p2)
+                p2 = t2.serve()
+                #when a Pokemon dies, it is added to the dead attribute of the trainer's Poketeam instance
+                self.trainer_1.PokeTeam.dead.push(dead_pokemon_1)  
+                p1 = t1.serve()
+            elif p1 is not None and p2 is None:
+                #same logic as above
+                dead_pokemon_2 = t2.array[t2.front-1]
+                if len(t2) == 0:
+                    t1.append(p1)
+                    self.trainer_2.PokeTeam.dead.push(dead_pokemon_2)
+                    break
+                t1.append(p1)
+                p1 = t1.serve()
+                self.trainer_2.PokeTeam.dead.push(dead_pokemon_2)
+                p2 = t2.serve()
+            elif p1 is not None and p2 is not None:
+                #when both Pokemon doesn't die after the last fight
+                if round != 0:
+                    #apply when it's not round 0 when the battle start
+                    t1.append(p1)
+                    t2.append(p2)
+                    p1 = t1.serve()
+                    p2 = t2.serve()
+            else:
+                #these next 4 lines are for when both of them die in the last battle when both team have 1 Pokemon left
+                dead_pokemon_1 = t1.array[t1.front-1]
+                dead_pokemon_2 = t2.array[t2.front-1]
+                self.trainer_1.PokeTeam.dead.push(dead_pokemon_1)
+                self.trainer_2.PokeTeam.dead.push(dead_pokemon_2)
+                #these are for when 2 pokemon dies together on the battlefield  
+                p1 = t1.serve()
+                p2 = t2.serve()
+            #since it's a circular queue, Pokedex registration happen every round since a different Pokemon appear on battle each round
+            self.trainer_1.register_pokemon(p2)
+            self.trainer_2.register_pokemon(p1)
+            #damage calculation
+            dmg1 = self.cal_attack(p1,p2,self.trainer_1,self.trainer_2)
+            dmg2 = self.cal_attack(p2,p1,self.trainer_2,self.trainer_1)
+
+            #battle logic evaluation of p1 and p2
+            if p1.speed > p2.speed:
+                p2.defend(dmg1)
+                if p2.is_alive():
+                    p1.defend(dmg2)
+                else:
+                    p1.level_up()
+                    round += 1
+                    p2 = None
+                    continue
+            elif p1.speed < p2.speed:
+                p1.defend(dmg2)
+                if p1.is_alive():
+                    p2.defend(dmg1)
+                else:
+                    p2.level_up()
+                    round += 1
+                    p1 = None
+                    continue
+            else:
+                p1.defend(dmg2)
+                p2.defend(dmg1)
+            #evaluation after first attack
+            if p1.is_alive() and not p2.is_alive():
+                p1.level_up()
+                p2 = None
+                round += 1
+                continue
+            elif not p1.is_alive() and p2.is_alive():
+                p2.level_up()
+                round += 1
+                p1 = None
+                continue
+            elif p1.is_alive() and p2.is_alive():
+                p1.health -= 1
+                p2.health -= 1
+                if p1.is_alive() and not p2.is_alive():
+                    p1.level_up()
+                    p2 = None
+                    round += 1
+                    continue
+                elif not p1.is_alive() and p2.is_alive():
+                    p2.level_up()
+                    p1 = None
+                    round += 1
+                    continue
+                elif p1.is_alive() and p2.is_alive():
+                   pass
+                else:
+                    p1 = None
+                    p2 = None
+            else:
+                p1 = None
+                p2 = None
+            round += 1
+        #final winner evaluation between trainer 1 and 2
+        if len(t1) > 0 and len(t2) == 0:
+            self.loser = self.trainer_2
+            return self.trainer_1
+        elif len(t2) > 0 and len (t1) == 0:
+            self.loser = self.trainer_1
+            return self.trainer_2
+        else:
+            return None
