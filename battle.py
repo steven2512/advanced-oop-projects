@@ -279,3 +279,139 @@ class Battle:
             return self.trainer_2
         else:
             return None
+        
+    def optimise_battle(self) -> PokeTeam | None:
+        #logic is mostly similar to the last 2 battle modes
+        """Worst/best case: O(round)"""
+        #assign t1 and t2 as trainer1 and 2 teams
+        t1 = self.trainer_1.PokeTeam.team
+        t2 = self.trainer_2.PokeTeam.team
+        #for extra access purposes during battle
+        team1 = self.trainer_1.PokeTeam
+        team2 = self.trainer_2.PokeTeam
+        #register Pokemons in the queue (unserved) of both teams to the Pokedex
+        self.pokedex_reg()
+        p1 = t1.serve()
+        p2 = t2.serve()
+        round = 0
+        while True:
+            # pdb.set_trace()
+            if p1 is None and p2 is not None:
+                if len(t1) == 0:
+                    t2.append(p2)
+                    team2.assign_team(self.criterion)
+                    t2 = self.trainer_2.PokeTeam.team
+                    break
+                t2.append(p2)
+                #arrange team in ascending (or descending if applied special) based on the criterion
+                team2.assign_team(self.criterion)
+                t2 = self.trainer_2.PokeTeam.team
+                #check if the order of team2 is set to descending during battle
+                if team2.ascending == False:
+                    team2.special(self.criterion)
+                p2 = t2.serve()  
+                p1 = t1.serve()
+            elif p1 is not None and p2 is None:
+                if len(t2) == 0:
+                    t1.append(p1)
+                    team1.assign_team(self.criterion)
+                    t1 = self.trainer_1.PokeTeam.team
+                    break
+                t1.append(p1)
+                #arrange team in ascending (or descending if applied special) based on the criterion
+                team1.assign_team(self.criterion)
+                t1 = self.trainer_1.PokeTeam.team
+                #check if the order of team2 is set to descending during battle
+                if team1.ascending == False:
+                    team1.special(self.criterion)
+                p1 = t1.serve()
+                p2 = t2.serve()
+            elif p1 is not None and p2 is not None:
+                if round != 0:
+                    t1.append(p1)
+                    t2.append(p2)
+                    #arrange team in ascending (or descending if applied special) based on the criterion
+                    team1.assign_team(self.criterion)
+                    team2.assign_team(self.criterion)
+                    t1 = self.trainer_1.PokeTeam.team
+                    t2 = self.trainer_2.PokeTeam.team
+                    # pdb.set_trace()
+                    if team1.ascending == False:
+                        team1.special(self.criterion)
+                    if team2.ascending == False:
+                        team2.special(self.criterion)
+                    p1 = t1.serve()
+                    p2 = t2.serve()
+                    # pdb.set_trace()
+            else:
+                print('Both DEAD')
+                p1 = t1.serve()
+                p2 = t2.serve()
+            #pokedex registeration for both trainers
+            self.trainer_1.register_pokemon(p2)
+            self.trainer_2.register_pokemon(p1)
+            #damage calculation of p1 on p2 and vice versa
+            dmg1 = self.cal_attack(p1,p2,self.trainer_1,self.trainer_2)
+            dmg2 = self.cal_attack(p2,p1,self.trainer_2,self.trainer_1)
+            #battle logic evaluation of p1 and p2
+            if p1.speed > p2.speed:
+                p2.defend(dmg1)
+                if p2.is_alive():
+                    p1.defend(dmg2)
+                else:
+                    p1.level_up()
+                    round += 1
+                    p2 = None
+                    continue
+            elif p1.speed < p2.speed:
+                p1.defend(dmg2)
+                if p1.is_alive():
+                    p2.defend(dmg1)
+                else:
+                    p2.level_up()
+                    round += 1
+                    p1 = None
+                    continue
+            else:
+                p1.defend(dmg2)
+                p2.defend(dmg1)
+            #evaluation after first attack
+            if p1.is_alive() and not p2.is_alive():
+                p1.level_up()
+                p2 = None
+                round += 1
+                continue
+            elif not p1.is_alive() and p2.is_alive():
+                p2.level_up()
+                round += 1
+                p1 = None
+                continue
+            elif p1.is_alive() and p2.is_alive():
+                p1.health -= 1
+                p2.health -= 1
+                if p1.is_alive() and not p2.is_alive():
+                    p1.level_up()
+                    p2 = None
+                    round += 1
+                    continue
+                elif not p1.is_alive() and p2.is_alive():
+                    p2.level_up()
+                    p1 = None
+                    round += 1
+                    continue
+                elif p1.is_alive() and p2.is_alive():
+                   pass
+                else:
+                    p1 = None
+                    p2 = None
+            else:
+                p1 = None
+                p2 = None
+            round += 1
+        #final winner evaluation between trainer 1 and 2
+        if len(t1) > 0 and len(t2) == 0:
+            return self.trainer_1
+        elif len(t2) > 0 and len (t1) == 0:
+            return self.trainer_2
+        else:
+            return None
