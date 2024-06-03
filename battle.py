@@ -415,3 +415,28 @@ class Battle:
             return self.trainer_2
         else:
             return None
+    
+    def cal_attack(self,p1,p2,trainer1,trainer2):
+        attack_damage = math.ceil(p1.attack(p2) * (trainer1.get_pokedex_completion()/trainer2.get_pokedex_completion()))
+        return attack_damage
+    
+    def pokedex_reg(self):
+        """Worst/best: O(n+m) which n being the length of trainer 1 PokeTeam, and m being the length of trainer 2 PokeTeam"""
+        for i in range(len(self.trainer_1.PokeTeam.team)):
+            self.trainer_1.register_pokemon(self.trainer_1.PokeTeam.team.array[i])
+        for j in range(len(self.trainer_2.PokeTeam.team)):
+            self.trainer_2.register_pokemon(self.trainer_2.PokeTeam.team.array[j])
+
+
+
+if __name__ == '__main__':
+    t1 = Trainer('Ash')
+    t2 = Trainer('Gary')
+    b = Battle(t1, t2, BattleMode.ROTATE)
+    b._create_teams()
+    winner = b.commence_battle()
+
+    if winner is None:
+        print("Its a draw")
+    else:
+        print(f"The winner is {winner.get_name()}")
