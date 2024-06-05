@@ -37,3 +37,45 @@ class BattleTower:
             enemy_trainer.lives = random.randint(self.MIN_LIVES, self.MAX_LIVES)
             # pdb.set_trace()
             self.enemy_trainers.append(enemy_trainer)
+        
+            
+
+    def battles_remaining(self) -> bool:
+        if self.player_trainer.lives == 0 or len(self.enemy_trainers) == 0:
+            return False
+        return True
+
+    def next_battle(self) -> Tuple[Trainer, Trainer, Trainer, int, int]:    
+        #serve enemy_trainer at the beginning of every round
+        enemy_trainer = self.enemy_trainers.serve() 
+        #regenerate both teams before every round
+        self.player_trainer.PokeTeam.regenerate_team(BattleMode.ROTATE)
+        enemy_trainer.PokeTeam.regenerate_team(BattleMode.ROTATE)
+        #2 teams of both trainers go into battle
+        self.battle = Battle(self.player_trainer,enemy_trainer,BattleMode.ROTATE)
+        winner = self.battle.commence_battle()
+        loser = self.battle.loser
+        #winner and loser evaluation for appropriate lives addition and subtraction
+        if winner.name == self.player_trainer.name:
+            enemy_trainer.lives -= 1
+            self.wins +=1
+        elif winner.name == enemy_trainer.name:
+            self.player_trainer.lives -= 1
+        else:
+            self.player_trainer.lives -= 1
+            enemy_trainer.lives -= 1
+        #append enenmy trainer to the back of the queue if they still have lives larger than 0
+        if enemy_trainer.lives > 0:
+            self.enemy_trainers.append(enemy_trainer)
+        #create a data structure of Array for temporarily strong the battle tower result
+        result_temp = ArrayR(5)
+        result_temp[0]= f'{winner.name} defeated {loser.name}'
+        result_temp[1] = f'{winner.name}'
+        result_temp[2] = f'{loser.name}'
+        result_temp[3] = f'{self.player_trainer.lives}'
+        result_temp[4] = f'{enemy_trainer.lives}'
+        result = tuple(result_temp)
+        return result
+        
+    def enemies_defeated(self) -> int:
+        return self.wins
